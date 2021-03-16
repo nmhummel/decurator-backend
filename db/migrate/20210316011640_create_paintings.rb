@@ -4,7 +4,6 @@ class CreatePaintings < ActiveRecord::Migration[6.1]
       t.string :title
       t.string :artist
       t.string :artistBio
-      t.string :nationality
       t.string :gender
       t.string :date
       t.string :medium
