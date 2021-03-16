@@ -15,6 +15,13 @@ def make_art
     end
 end
 
+def make_rooms
+    Room.create(name: "Crystal Palace")
+    5.times do
+        Room.create(name: Faker::Movies::LordOfTheRings.unique.location)
+    end
+end
 
 make_art
-
+make_rooms
+# see results in log/development.log

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  root "welcome#index"
   resources :paintings
   resources :rooms
-  resources :galleries
+  resources :exhibits
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

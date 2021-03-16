@@ -1,3 +1,4 @@
 class Room < ApplicationRecord
-    belongs_to :gallery
+    has_many :exhibits
+    has_many :paintings, through: :exhibits
 end
