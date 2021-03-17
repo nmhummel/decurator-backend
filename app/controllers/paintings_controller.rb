@@ -3,6 +3,8 @@ class PaintingsController < ApplicationController
   # GET /paintings
   def index
     paintings = Painting.order(:artist)
+    # if params[pagelimit] - keep track of in reducer
+    # paintings = paintings.slice((params[pagelimit]), 20))
     render json: paintings.to_json(except: [:created_at, :updated_at]) 
   end
 
