@@ -4,7 +4,7 @@ class RoomsController < ApplicationController
   # GET /rooms
   def index
     rooms = Room.order(:name)
-    render json: rooms.to_json(except: [:created_at, :updated_at]) 
+    render json: rooms.to_json(except: [:created_at, :updated_at], include: :paintings) 
   end
 
   # GET /rooms/1
@@ -26,6 +26,7 @@ class RoomsController < ApplicationController
   # PATCH/PUT /rooms/1
   def update
     if @room.update(room_params)
+      @room.paintings << Painting.find(params[:painting_id])
       render json: @room.to_json(except: [:created_at, :updated_at]) 
     else
       render json: @room.errors, status: :unprocessable_entity
@@ -35,6 +36,7 @@ class RoomsController < ApplicationController
   # DELETE /rooms/1
   def destroy
     @room.destroy
+    render json: @room.to_json(except: [:created_at, :updated_at])
   end
 
   private
