@@ -25,9 +25,9 @@ class RoomsController < ApplicationController
 
   # PATCH/PUT /rooms/1
   def update
-    if @room.update(room_params)
-      @room.paintings << Painting.find(params[:painting_id])
-      render json: @room.to_json(except: [:created_at, :updated_at]) 
+    @room.paintings << Painting.find(params[:painting_id])
+    if @room.save
+      render json: @room.to_json(except: [:created_at, :updated_at], include: :paintings) 
     else
       render json: @room.errors, status: :unprocessable_entity
     end
@@ -47,6 +47,6 @@ class RoomsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def room_params
-      params.require(:room).permit(:name)
+      params.require(:room).permit(:name, :painting_id, :id)
     end
 end
