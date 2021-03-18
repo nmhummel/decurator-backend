@@ -9,8 +9,7 @@ class RoomsController < ApplicationController
 
   # GET /rooms/1
   def show
-    #room = Room.find(params[:id])
-    render json: @room
+    render json: @room.to_json(except: [:created_at, :updated_at]) 
   end
 
   # POST /rooms
