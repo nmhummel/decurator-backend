@@ -2,8 +2,8 @@ class PaintingsController < ApplicationController
 
   # GET /paintings
   def index
-    paintings = Painting.order(:artist).sample(10)
-    page_number = params[:pagelimit]
+    paintings = Painting.order(:artist).sample(15)
+    #page_number = params[:pagelimit]
   
     # if params[pagelimit] - keep track of in reducer
     # paintings = paintings.slice((params[pagelimit]), 20))

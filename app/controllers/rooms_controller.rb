@@ -9,7 +9,7 @@ class RoomsController < ApplicationController
 
   # GET /rooms/1
   def show
-    render json: @room.to_json(except: [:created_at, :updated_at]) 
+    render json: @room.to_json(except: [:created_at, :updated_at], include: :paintings) 
   end
 
   # POST /rooms
@@ -17,7 +17,7 @@ class RoomsController < ApplicationController
     room = Room.new(room_params)
 
     if room.save
-      render json: room.to_json(except: [:created_at, :updated_at]), status: :created, location: room
+      render json: room.to_json(except: [:created_at, :updated_at], include: :paintings), status: :created, location: room
     else
       render json: room.errors, status: :unprocessable_entity
     end
