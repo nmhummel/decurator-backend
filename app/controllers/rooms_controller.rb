@@ -3,12 +3,13 @@ class RoomsController < ApplicationController
 
   # GET /rooms
   def index
-    rooms = Room.order(:name)
+    rooms = Room.order(:id)
     render json: rooms.to_json(except: [:created_at, :updated_at], include: :paintings) 
   end
 
   # GET /rooms/1
   def show
+    #@paintings = Painting.all.uniq
     render json: @room.to_json(except: [:created_at, :updated_at], include: :paintings) 
   end
 
