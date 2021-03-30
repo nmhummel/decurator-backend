@@ -9,7 +9,6 @@ class RoomsController < ApplicationController
 
   # GET /rooms/1
   def show
-    #@paintings = Painting.all.uniq
     render json: @room.to_json(except: [:created_at, :updated_at], include: :paintings) 
   end
 
@@ -26,7 +25,6 @@ class RoomsController < ApplicationController
 
   # PATCH/PUT /rooms/1
   def update
-    # byebug
     @room.paintings << Painting.find(params[:painting_id])
     if @room.save
       render json: @room.to_json(except: [:created_at, :updated_at], include: :paintings) 

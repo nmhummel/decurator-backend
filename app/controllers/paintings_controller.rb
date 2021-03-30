@@ -3,9 +3,11 @@ class PaintingsController < ApplicationController
   # GET /paintings
   
   def index
-    paintings = Painting.order(:artist).sample(20)
+    paintings = Painting.order(:artist).sample(24)
     render json: paintings.to_json(except: [:created_at, :updated_at]) 
   end
+  # page_number = params[:q].to_i
+  # @listings = Listing.order('created_at DESC').limit(21).offset(page_number*21).includes(:image_blob)
 
     #page_number = params[:pagelimit]
     # if params[pagelimit] - keep track of in reducer
